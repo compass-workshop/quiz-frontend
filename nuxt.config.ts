@@ -2,5 +2,11 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules:['@nuxtjs/tailwindcss'],
-
+  vite: {
+    server: {
+      fs: {
+        strict: false
+      }
+    }
+  }
 })
