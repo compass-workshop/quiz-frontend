@@ -4,8 +4,8 @@
   
       <div class="space-y-2">
         <div v-for="(option, index) in options" :key="index" class="flex items-center">
-          <input :id="`option${index}${indexs}`" type="radio" :name="`answer${questionIndex}`" :value="option" v-model="selectedOption" @click="changeAnswer(option,index)" >
-          <label :for="`option${index}${indexs}`" class="ml-2">{{ `Option ${String.fromCharCode(65 + index)}: ${option}` }}</label>
+          <input :id="`option${index}${questionIndex}`" type="radio" :name="`answer${questionIndex}`" :value="option" v-model="selectedOption" @click="changeAnswer(option,questionIndex)" >
+          <label :for="`option${index}`" class="ml-2">{{ `Option ${String.fromCharCode(65 + index)}: ${option}` }}</label>
         </div>
       </div>
     </div>
@@ -20,10 +20,7 @@
         type: String,
         default: ""
     },
-    indexs: {
-        type: Number,
-        default: 0
-    },
+    
   });
   const emit = defineEmits(["selectAnswer"]);
     const { question, options, questionIndex,answer,index } = toRefs(props);
@@ -31,7 +28,7 @@
     const changeAnswer = (option,index) => {
         const payload = {
             option,
-            index
+            index: questionIndex.value
         }
         emit("selectAnswer",payload);
     }
