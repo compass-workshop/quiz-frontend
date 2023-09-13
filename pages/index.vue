@@ -14,7 +14,7 @@
 
     const question = ref(["What is the capital of France?","What is the capital of England?","What is the capital of Germany?","What is the capital of Spain?"]);
     const options = ref([["Paris", "London", "Berlin", "Madrid"],["Paris", "London", "Berlin", "Madrid"],["Paris", "London", "Berlin", "Madrid"],["Paris", "London", "Berlin", "Madrid"]]);
-    const answer = ref(["paris","London","Berlin","Madrid"]);
+    const answer = ref(["Paris","London","Berlin","Madrid"]);
     const defaultAnswer = ref(["","","",""]);
     const changeAnswer = (payload) => {
         const {option,index} = payload;
