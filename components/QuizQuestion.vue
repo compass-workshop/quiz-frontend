@@ -22,6 +22,7 @@
     },
     
   });
+  console.log(props);
   const emit = defineEmits(["selectAnswer"]);
     const { question, options, questionIndex,answer,index } = toRefs(props);
     const selectedOption = ref(answer.value);
