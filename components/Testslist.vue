@@ -1,7 +1,8 @@
 <template>
     <div>
-        <div v-for="test in data" :key="test.id">
-            <div class="grid grid-cols-2 gap-x-64 w-full mt-10 mb-10 pl-6 text-2xl">
+        <div v-for="test in data" :key="test.id"
+        class="shadow-lg">
+            <div class="grid grid-cols-2 gap-x-64 w-full mt-10 mb-10 pl-6 py-4 text-2xl hover:shadow-xl">
                 <div>
                     {{ test.id }} | {{ test.name }}
                 </div>
