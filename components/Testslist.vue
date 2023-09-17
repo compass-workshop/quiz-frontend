@@ -6,7 +6,7 @@
                 <div>
                     {{ test.name }}
                 </div>
-                <div class="">
+                <div>
                     <span>
                         <NuxtLink :to="`/test/${test.id}/launch`">Launch</NuxtLink>
                     </span>
