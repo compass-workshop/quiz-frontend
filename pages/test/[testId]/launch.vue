@@ -43,7 +43,7 @@
         // const store = useStore();
         const userId = "52134764-2a47-4cae-b972-a18eb4f6e46b";
         const sendData = {
-          submittedAnswers: defaultAnswer.value,
+          answers: defaultAnswer.value,
           userId,
           testId: params,
           submittedAt: 10,
