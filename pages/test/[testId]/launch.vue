@@ -3,7 +3,6 @@
       <h1 class="text-2xl font-semibold text-center pt-10">Quiz</h1>
   
       <QuizQuestion v-for="(question, index) in questionData" :key="index" :question="question"  :options="options[index]"  :questionIndex="index" @selectAnswer="changeAnswer"/>
-      
       <div class="flex justify-center my-10">
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded " @click="checkAnswers">Check Answers</button>
       </div>
@@ -25,19 +24,17 @@
         data.questions.forEach((question) => {
           questionData.value= [...questionData.value,question.text];
           options.value= [...options.value,question.options];
-          defaultAnswer.value= [...defaultAnswer.value,{questionId: question.id, questionText: question.text, answer: question.answer}];
+          defaultAnswer.value= [...defaultAnswer.value,{questionId: question.id, questionText: question.text, selectedAnswer: ''}];
           answer.value= [...answer.value,question.answer];
-          
         })
       }
       await getData();
-      // console.log(defaultAnswer.value);
     })
     
     
     const changeAnswer = (payload) => {
         const {option,index} = payload;
-        defaultAnswer.value[index].answer = option;
+        defaultAnswer.value[index].selectedAnswer = option;
     }
     const checkAnswers = async() => {
         // const store = useStore();
@@ -45,20 +42,18 @@
         const sendData = {
           answers: defaultAnswer.value,
           userId,
+          email: 'rohit.kumar@comprotechnologies.com',
           testId: params,
           submittedAt: 10,
           submittedBy: "Rohit"
 
         }
-        console.log(sendData);
         const response = await fetch(`http://localhost:3000/tests/${userId}/${params}`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({
-            answers: sendData
-          })
+          body: JSON.stringify(sendData)
         });
         const data = await response.json();
         console.log(data);
