@@ -15,18 +15,17 @@
     const options = ref([]);
     const defaultAnswer = ref([]);
     const answer = ref([]);
-    const params = "30c82e3e-3d2f-408b-99af-9a5901d71953"
+    const route = useRoute();
+    const params = route.params.testId; 
     onMounted(async()=>{
-      const route = useRoute();
-      // const params = route.params.testId;
       
       const getData = async() => {
-        const response = await fetch(`http://localhost:3001/tests/${params}`);
+        const response = await fetch(`http://localhost:3000/tests/${params}`);
         const data = await response.json();
         data.questions.forEach((question) => {
           questionData.value= [...questionData.value,question.text];
           options.value= [...options.value,question.options];
-          defaultAnswer.value= [...defaultAnswer.value,{questionId: question.id, answer: ""}];
+          defaultAnswer.value= [...defaultAnswer.value,{questionId: question.id, questionText: question.text, answer: question.answer}];
           answer.value= [...answer.value,question.answer];
           
         })
@@ -44,7 +43,7 @@
         // const store = useStore();
         const userId = "52134764-2a47-4cae-b972-a18eb4f6e46b";
         const sendData = {
-          submittedAnswers: [{questionId: '1b8a4a1e-eabd-47fd-b2a2-a72befbc5864', questionText: 'Which country is known as the Land of the Rising Sun?', answer: 'Japan'}],
+          submittedAnswers: defaultAnswer.value,
           userId,
           testId: params,
           submittedAt: 10,
