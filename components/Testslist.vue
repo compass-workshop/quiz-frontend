@@ -7,7 +7,7 @@
                 </div>
                 <div>
                     <span>
-                        <NuxtLink :to="'/test/' + test.id + '/launch'">Launch</NuxtLink>
+                        <NuxtLink :to="`/test/${test.id}/launch`">Launch</NuxtLink>
                     </span>
                     <span :class="{'invisible': test.is_review}">
                         <button>&nbsp;| Review</button>
