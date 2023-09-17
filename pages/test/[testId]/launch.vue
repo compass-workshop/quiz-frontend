@@ -44,7 +44,7 @@
         // const store = useStore();
         const userId = "52134764-2a47-4cae-b972-a18eb4f6e46b";
         const sendData = {
-          submittedAmswers: defaultAnswer.value,
+          submittedAnswers: [{questionId: '1b8a4a1e-eabd-47fd-b2a2-a72befbc5864', questionText: 'Which country is known as the Land of the Rising Sun?', answer: 'Japan'}],
           userId,
           testId: params,
           submittedAt: 10,
@@ -52,7 +52,7 @@
 
         }
         console.log(sendData);
-        const response = await fetch(`http://localhost:3001/tests/${userId}/${params}`,{
+        const response = await fetch(`http://localhost:3000/tests/${userId}/${params}`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json"
