@@ -5,9 +5,9 @@
                 <div>
                     {{ test.name }}
                 </div>
-                <div class="">
+                <div>
                     <span>
-                        <NuxtLink to="/user/:userId/test/:testId/launch">Launch</NuxtLink>
+                        <NuxtLink :to="'/test/' + test.id + '/launch'">Launch</NuxtLink>
                     </span>
                     <span :class="{'invisible': test.is_review}">
                         <button>&nbsp;| Review</button>
