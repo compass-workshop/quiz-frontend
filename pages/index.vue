@@ -69,12 +69,5 @@ input {
 button {
 
     @apply p-3 mb-3 mr-3  bg-[#007bff] text-white font-bold py-2 px-4 rounded;
-    
-  /* background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 10px; */
 }
 </style>
