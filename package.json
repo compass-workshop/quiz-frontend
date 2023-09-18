@@ -14,7 +14,6 @@
     "nuxt": "^3.7.2"
   },
   "dependencies": {
-    "http-proxy-middleware": "^2.0.6",
-    "vuex": "^4.0.2"
+    "http-proxy-middleware": "^2.0.6"
   }
 }

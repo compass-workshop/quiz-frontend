@@ -16,11 +16,19 @@
     const answer = ref([]);
     const route = useRoute();
     const params = route.params.testId; 
+    const userId = ref(null);
+    definePageMeta({
+      middleware:"auth"
+    })
+    
+
     onMounted(async()=>{
-      
+     
+      userId.value= localStorage.getItem("email");
       const getData = async() => {
         const response = await fetch(`http://localhost:3000/tests/${params}`);
         const data = await response.json();
+      
         data.questions.forEach((question) => {
           questionData.value= [...questionData.value,question.text];
           options.value= [...options.value,question.options];
@@ -37,18 +45,18 @@
         defaultAnswer.value[index].selectedAnswer = option;
     }
     const checkAnswers = async() => {
-        // const store = useStore();
-        const userId = "52134764-2a47-4cae-b972-a18eb4f6e46b";
+
+        
         const sendData = {
           answers: defaultAnswer.value,
-          userId,
+          userId: userId.value,
           email: 'rohit.kumar@comprotechnologies.com',
           testId: params,
           submittedAt: 10,
           submittedBy: "Rohit"
 
         }
-        const response = await fetch(`http://localhost:3000/tests/${userId}/${params}`,{
+        const response = await fetch(`http://localhost:3000/tests/${userId.value}/${params}`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json"

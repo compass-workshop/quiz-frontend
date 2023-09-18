@@ -4,7 +4,6 @@ const proxyMiddleware = require('./proxy.ts');
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  
   modules:['@nuxtjs/tailwindcss'],
   vite: {
     server: {
