@@ -19,6 +19,7 @@ export default defineNuxtConfig({
       }
     }
   },
+  
 
   //call to localhost:3001/api/hello which is another server
  

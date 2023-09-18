@@ -49,37 +49,32 @@
 
 
 .container {
-  display: flex;
-  justify-content: center; 
-  width: 100%;
-  margin-left:4rem;
-  align-items: center; 
-  min-height: 80vh; 
+    @apply flex  items-center justify-center;
+    @apply w-full ;
+    @apply min-h-[80vh];
+
 }
 .select{
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    width: 100%;
-
-    border-radius: 10px;
+    @apply p-3 mb-3 mr-3 w-full rounded-2xl;
+    
 }
 .input {
-  text-align: center;
+  @apply text-center;
 }
 
 input {
-  padding: 10px;
-  margin-bottom: 10px;
-  margin-right: 10px;
+    @apply p-3 mb-3 mr-3  ;
 }
 
 button {
-  background-color: #007bff;
+
+    @apply p-3 mb-3 mr-3  bg-[#007bff] text-white font-bold py-2 px-4 rounded;
+    
+  /* background-color: #007bff;
   color: #fff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 10px; */
 }
 </style>
