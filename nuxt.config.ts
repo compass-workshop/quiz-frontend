@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const proxyMiddleware = require('./proxy.ts');
 
 
 export default defineNuxtConfig({

@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-    const { data } = await useFetch('http://localhost:3002/tests');
+    const { data } = await useFetch('http://localhost:3000/tests');
 </script>
 
 <style scoped>

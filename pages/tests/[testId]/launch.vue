@@ -13,7 +13,6 @@
     const questionData = ref([]);
     const options = ref([]);
     const defaultAnswer = ref([]);
-    const answer = ref([]);
     const route = useRoute();
     const params = route.params.testId; 
     const userId = ref(null);
@@ -26,14 +25,13 @@
      
       userId.value= localStorage.getItem("email");
       const getData = async() => {
-        const response = await fetch(`http://localhost:3002/tests/${params}`);
+        const response = await fetch(`http://localhost:3000/tests/${params}`);
         const data = await response.json();
       
         data.questions.forEach((question) => {
           questionData.value= [...questionData.value,question.text];
           options.value= [...options.value,question.options];
           defaultAnswer.value= [...defaultAnswer.value,{questionId: question.id, questionText: question.text, selectedAnswer: ''}];
-          answer.value= [...answer.value,question.answer];
         })
       }
       await getData();
@@ -56,7 +54,7 @@
           submittedBy: "Rohit"
 
         }
-        const response = await fetch(`http://localhost:3002/tests/${userId.value}/${params}`,{
+        const response = await fetch(`http://localhost:3000/tests/${userId.value}/${params}`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json"
