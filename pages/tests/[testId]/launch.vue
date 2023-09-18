@@ -26,7 +26,7 @@
      
       userId.value= localStorage.getItem("email");
       const getData = async() => {
-        const response = await fetch(`http://localhost:3000/tests/${params}`);
+        const response = await fetch(`http://localhost:3002/tests/${params}`);
         const data = await response.json();
       
         data.questions.forEach((question) => {
@@ -56,7 +56,7 @@
           submittedBy: "Rohit"
 
         }
-        const response = await fetch(`http://localhost:3000/tests/${userId.value}/${params}`,{
+        const response = await fetch(`http://localhost:3002/tests/${userId.value}/${params}`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json"
