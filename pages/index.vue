@@ -1,7 +1,7 @@
 <template>
     <div v-if="!validEmail" class="container">
         <div class="input">
-            <select class="select" v-model="id">
+            <select class="p-3 mb-3 mr-3 w-full rounded-2xl" v-model="id">
                 <!-- give a placeholder select user -->
 
                 <option value="03aecfad-2b7e-4cad-acef-aaa72db3c54b">Ashmeet</option>
@@ -42,15 +42,10 @@
 
 
 .container {
-    @apply flex  items-center justify-center;
-    @apply w-full ;
-    @apply min-h-[80vh];
+    @apply flex  items-center justify-center w-full  min-h-[80vh];
 
 }
-.select{
-    @apply p-3 mb-3 mr-3 w-full rounded-2xl;
-    
-}
+
 .input {
   @apply text-center;
 }
