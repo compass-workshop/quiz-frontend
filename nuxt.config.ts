@@ -11,14 +11,6 @@ export default defineNuxtConfig({
       fs: {
         strict: false
       },
-      proxy:{
-        '/api':{
-          target:'http://localhost:3001',
-          changeOrigin:true,
-          rewrite:(path:any)=>path.replace(/^\/api/,'')
-        }
-      }
-      
     }
     
   },
