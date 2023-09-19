@@ -1,7 +1,7 @@
 <template>
      <div >
         <Analytics />
-        <TestsList />
+        <ListTest />
     </div>
 </template>
 
