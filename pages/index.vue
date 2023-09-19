@@ -20,27 +20,20 @@
 </template>
 
 <script setup>
-   const email = ref(null);
-   const id = ref("");
+   const id = ref(null);
    const validEmail =ref(false);
    const route = useRoute();
    definePageMeta({
        middleware: 'auth'
    })
-
    onMounted(()=>{
-         id.value = localStorage.getItem("email");
-         if(id.value){
-              validEmail.value = true;
-         }else{
-            id.value="03aecfad-2b7e-4cad-acef-aaa72db3c54b";
-         }
-   })
-    const checkEmail = async()=>{
+       id.value="03aecfad-2b7e-4cad-acef-aaa72db3c54b";
+       
+    })
+    const checkEmail = ()=>{
         //set the email in the local storage
-        localStorage.setItem("email",email.value);
-        validEmail.value = true;
-        route.push('tests');
+        localStorage.setItem("email",id.value);
+        navigateTo('/tests')
     }
 
 </script>

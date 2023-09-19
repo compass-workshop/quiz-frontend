@@ -4,6 +4,8 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules:['@nuxtjs/tailwindcss'],
+  //ssr is true by default and we can change it to false
+  ssr:false,
   vite: {
     server: {
       fs: {
@@ -16,7 +18,9 @@ export default defineNuxtConfig({
           rewrite:(path:any)=>path.replace(/^\/api/,'')
         }
       }
+      
     }
+    
   },
   
 

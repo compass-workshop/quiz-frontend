@@ -1,19 +1,22 @@
 //get the email from the local storage and check if it is available or not
 const getEmail = () => {
-  if (process.client) {
+    // console.log(process.client)
+  if(process.client){
     return localStorage.getItem("email");
   }
-  return null;
+    return null;
 };
 export default defineNuxtRouteMiddleware((to, from) => {
-  const email = getemail();
+  const email = getEmail();
+  
   if (to.path === "/") {
     if (email) {
       return navigateTo("/tests");
-    }
+    }else
     return true;
   }
-  if (email) {
+  console.log(to.path,email)
+  if (email!==null) {
     return true;
   } else {
     return navigateTo("/");
