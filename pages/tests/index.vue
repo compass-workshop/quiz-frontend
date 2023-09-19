@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <Analytics />
-    <Testslist />
-  </div>
+     <div >
+        <Analytics />
+        <TestsList />
+    </div>
 </template>
 
 <script setup>

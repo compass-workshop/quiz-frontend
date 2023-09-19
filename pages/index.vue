@@ -105,7 +105,7 @@ const checkEmail = () => {
 }
 
 .input {
-  @apply text-center;
+    @apply text-center;
 }
 
 input {

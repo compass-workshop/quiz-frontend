@@ -1,6 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-
-
 export default defineNuxtConfig({
   devServer: {
     port: 8000,
@@ -15,10 +13,5 @@ export default defineNuxtConfig({
         strict: false
       },
     }
-    
   },
-  
-
-  //call to localhost:3001/api/hello which is another server
- 
 })
