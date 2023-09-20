@@ -8,7 +8,7 @@
                 <div>
                     <span>
                         <button class="border-4 border-red-800 p-2 bg-yellow-300 rounded-full">
-                            <NuxtLink :to="`/test/${test.id}/launch`">Launch</NuxtLink>
+                            <NuxtLink :to="`/tests/${test.id}/launch`">Launch</NuxtLink>
                         </button>
                     </span>
                     <span :class="{'invisible': test.is_review}">
