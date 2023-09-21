@@ -25,6 +25,8 @@ const questionData = ref([]);
 const options = ref([]);
 const selectedAnswer = ref([]);
 const userId = ref(null);
+const email = ref(null);
+const userName = ref(null);
 
 const route = useRoute();
 const testId = route.params.testId;
@@ -34,7 +36,9 @@ definePageMeta({
 });
 
 onMounted(async () => {
-  userId.value = localStorage.getItem("email");
+  userId.value = localStorage.getItem("userId");
+  email.value = localStorage.getItem("email");
+  userName.value = localStorage.getItem("userName");
   await getQuestions();
 });
 
@@ -62,10 +66,10 @@ const submitTest = async () => {
   const sendData = {
     answers: selectedAnswer.value,
     userId: userId.value,
-    email: "rohit.kumar@comprotechnologies.com",
+    email: email.value,
     testId: testId,
     submittedAt: 10,
-    submittedBy: "Rohit",
+    submittedBy: userName.value,
   };
   const response = await useFetch(
     `http://localhost:3000/tests/${userId.value}/${testId}`,
