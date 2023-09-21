@@ -43,15 +43,15 @@
         defaultAnswer.value[index].selectedAnswer = option;
     }
     const checkAnswers = async() => {
-
-        
+      const currentDate = new Date();
+      const currentTime = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
         const sendData = {
           answers: defaultAnswer.value,
-          userId: userId.value,
-          email: 'rohit.kumar@comprotechnologies.com',
+          userId: localStorage.getItem("userId"),
+          email: localStorage.getItem("email"),
           testId: params,
-          submittedAt: 10,
-          submittedBy: "Rohit"
+          submittedAt: currentTime,
+          submittedBy: localStorage.getItem("userName")
 
         }
         const response = await fetch(`http://localhost:3000/tests/${userId.value}/${params}`,{

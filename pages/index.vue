@@ -4,15 +4,7 @@
             <select class="p-3 mb-3 mr-3 w-full rounded-2xl" v-model="id">
                 <!-- give a placeholder select user -->
 
-                <option value="03aecfad-2b7e-4cad-acef-aaa72db3c54b">Ashmeet</option>
-                <option value="f7fca160-dec7-4b7e-9412-a5174be15b44">Rohit</option>
-                <option value="0ca5d409-312e-4679-b732-fe439562cb74">Rohan</option>
-                <option value="460760bb-f351-4c4c-94d8-cafff41e06d1">Nirmal</option>
-                <option value="52134764-2a47-4cae-b972-a18eb4f6e46b">Susanto</option>
-                <option value="8a43d941-4576-4b18-9204-74fdb1e76357">Sarthak</option>
-                <option value="8f9d6ebc-8e0b-4864-b329-d91b5542790d">Gopal</option>
-                <option value="a461a748-728b-4455-a52e-34be2fe289d3">Manoj</option>
-                <option value="fd259a5b-8bf2-468f-ae96-0375b846e84a">Praveen</option>
+                <option v-for="user in users" :value="user.userId">{{ user.firstName }} {{ user.lastName}}</option>
             </select>
             <button @click="checkEmail">Submit</button>
         </div>
@@ -23,16 +15,78 @@
    const id = ref(null);
    const validEmail =ref(false);
    const route = useRoute();
+   const users = ref(
+    [
+  {
+    "email": "susanto.mandal@mailsac.com",
+    "firstName": "Susanto",
+    "userId": "11fb14f6-cc4b-4bac-a875-bf8074c0235b",
+    "lastName": "Mandal"
+  },
+  {
+    "email": "sarthak.jain@mailsac.com",
+    "firstName": "Sarthak",
+    "userId": "19e4b894-3789-40cb-9524-4002a1a180a5",
+    "lastName": "Jain"
+  },
+  {
+    "email": "rohit.kumar@mailsac.com",
+    "firstName": "Rohit",
+    "userId": "2347dbe0-b383-4e72-8a26-1fecb2ee574c",
+    "lastName": "Kumar"
+  },
+  {
+    "email": "manoj.saini@mailsac.com",
+    "firstName": "Manoj",
+    "userId": "708f270d-5956-44f6-89ea-a8a8ffa3af46",
+    "lastName": "Saini"
+  },
+  {
+    "email": "ashmeet.kaur@mailsac.com",
+    "firstName": "Ashmeet",
+    "userId": "d2fba718-d25e-429e-a0f9-ec5640cba84d",
+    "lastName": "Kaur"
+  },
+  {
+    "email": "gopal.gupta@mailsac.com",
+    "firstName": "Gopal",
+    "userId": "d50e5046-5d43-4c92-ac02-fe7a56eab0d8",
+    "lastName": "Gupta"
+  },
+  {
+    "email": "praveen.kumar@mailsac.com",
+    "firstName": "Praveen",
+    "userId": "de7977fc-955a-4682-8c3e-0f27dd1caac5",
+    "lastName": "Kumar"
+  },
+  {
+    "email": "nirmal.kumar@mailsac.com",
+    "firstName": "Nirmal",
+    "userId": "e1bd0700-0f7f-4831-adaf-b34f7adba18f",
+    "lastName": "Kumar"
+  },
+  {
+    "email": "rohan.goel@mailsac.com",
+    "firstName": "Rohan",
+    "userId": "fb8fa005-93d8-4ddb-bb7a-14747e4f0e4a",
+    "lastName": "Goel"
+  }
+]
+
+   )
    definePageMeta({
        middleware: 'auth'
    })
    onMounted(()=>{
-       id.value="03aecfad-2b7e-4cad-acef-aaa72db3c54b";
-       
+       id.value = users.value[0].userId
     })
+
     const checkEmail = ()=>{
         //set the email in the local storage
-        localStorage.setItem("email",id.value);
+        const user = users.value.find(user => id.value === user.userId)
+        localStorage.setItem("userId",id.value);
+        localStorage.setItem("email",user.email);
+        localStorage.setItem("userName", user.firstName + " " + user.lastName);
         navigateTo('/tests')
     }
 
