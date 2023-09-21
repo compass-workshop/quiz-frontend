@@ -84,7 +84,7 @@
     const checkEmail = ()=>{
         //set the email in the local storage
         const user = users.value.find(user => id.value === user.userId)
-        localStorage.setItem("userId",id.value);
+        localStorage.setItem("userId",user.userId);
         localStorage.setItem("email",user.email);
         localStorage.setItem("userName", user.firstName + " " + user.lastName);
         navigateTo('/tests')

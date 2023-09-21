@@ -3,9 +3,9 @@
 
 export default defineNuxtConfig({
   devServer: {
-    port: 8080,
+    port: 8000,
   },
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   modules:['@nuxtjs/tailwindcss'],
   //ssr is true by default and we can change it to false
   ssr:false,
