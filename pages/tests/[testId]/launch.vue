@@ -43,14 +43,12 @@
         defaultAnswer.value[index].selectedAnswer = option;
     }
     const checkAnswers = async() => {
-      const currentDate = new Date();
-      const currentTime = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
         const sendData = {
-          answers: defaultAnswer.value,
+          submittedAmswers: defaultAnswer.value,
           userId: localStorage.getItem("userId"),
           email: localStorage.getItem("email"),
           testId: params,
-          submittedAt: currentTime,
+          submittedAt: (new Date).getTime(),
           submittedBy: localStorage.getItem("userName")
 
         }
