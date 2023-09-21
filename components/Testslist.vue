@@ -11,7 +11,7 @@
                             <NuxtLink :to="`/tests/${test.id}/launch`">Launch</NuxtLink>
                         </button>
                     </span>
-                    <span :class="{'invisible': test.is_review}">
+                    <span :class="{'invisible': !test.isAttempted}">
                         <span>&nbsp;| </span>
                         <button class="border-4 border-red-800 p-2 bg-yellow-300 rounded-full">Review</button>
                     </span>
@@ -22,7 +22,8 @@
 </template>
 
 <script setup>
-    const { data } = await useFetch('http://localhost:3000/tests');
+    const userId = localStorage.getItem("userId");
+    const { data } = await useFetch(`http://localhost:3000/users/${userId}/tests`);
 </script>
 
 <style scoped>

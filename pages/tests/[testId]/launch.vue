@@ -60,9 +60,7 @@ const changeAnswer = (payload) => {
 const checkAnswers = async () => {
   const sendData = {
     submittedAmswers: defaultAnswer.value,
-    userId: localStorage.getItem("userId"),
     email: localStorage.getItem("email"),
-    testId: params,
     submittedAt: new Date().getTime(),
     submittedBy: localStorage.getItem("userName"),
   };
