@@ -3,7 +3,7 @@
 
 export default defineNuxtConfig({
   devServer: {
-    port: 5000,
+    port: 8080,
   },
   devtools: { enabled: true },
   modules:['@nuxtjs/tailwindcss'],
