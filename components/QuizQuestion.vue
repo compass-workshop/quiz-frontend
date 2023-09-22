@@ -14,7 +14,8 @@
           :name="`answer${questionIndex}`"
           :value="option"
           v-model="selectedOption"
-          @click="changeAnswer(option, questionIndex)"
+          @click="isQuiz && changeAnswer(option, questionIndex)"
+          :disabled="!isQuiz"
         />
         <label :for="`option${index}`" class="ml-2">{{
           `Option ${String.fromCharCode(65 + index)}: ${option}`
@@ -33,6 +34,7 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  isQuiz: Boolean
 });
 const emit = defineEmits(["selectAnswer"]);
 const { question, options, questionIndex, answer, index } = toRefs(props);

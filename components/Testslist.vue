@@ -13,7 +13,9 @@
                     </span>
                     <span :class="{'invisible': !test.isAttempted}">
                         <span>&nbsp;| </span>
-                        <button class="border-4 border-red-800 p-2 bg-yellow-300 rounded-full">Review</button>
+                        <button class="border-4 border-red-800 p-2 bg-yellow-300 rounded-full">
+                            <NuxtLink :to="`/tests/${test.id}/review`">Review</NuxtLink>
+                        </button>
                     </span>
                 </div>
             </div>

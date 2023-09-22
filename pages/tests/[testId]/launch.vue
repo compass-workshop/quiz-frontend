@@ -8,6 +8,7 @@
       :options="options[index]"
       :questionIndex="index"
       @selectAnswer="changeAnswer"
+      :isQuiz=true
     />
     <div class="flex justify-center my-10">
       <button
