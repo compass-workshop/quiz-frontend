@@ -57,6 +57,7 @@ const getQuestions = async () => {
     ];
   });
 };
+
 const updateAnswer = (payload) => {
   const { option, index } = payload;
   selectedAnswer.value[index].selectedAnswer = option;
