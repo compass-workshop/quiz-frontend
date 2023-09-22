@@ -51,6 +51,7 @@ const changeAnswer = (option, index) => {
   emit("selectAnswer", payload);
 };
 const setBackgroundColor = (status) => {
-  return status === "CORRECT" ? "bg-green-300" : "bg-red-200";
+  return status === "CORRECT" ? "bg-green-100" : "bg-red-100";
 };
+
 </script>
