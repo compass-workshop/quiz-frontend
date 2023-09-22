@@ -1,13 +1,7 @@
 <template>
   <div
     class="max-w-md mx-auto mt-8 p-4 bg-white rounded shadow-lg"
-    :class="
-      !isQuiz
-        ? status === 'CORRECT'
-          ? 'bg-green-200'
-          : 'bg-red-300'
-        : 'bg-white'
-    "
+    :class="!isQuiz ? setBackgroundColor(status) : 'bg-gray-200'"
   >
     <h1 class="text-xl font-semibold mb-4">{{ question }}</h1>
 
@@ -26,9 +20,7 @@
           @click="isQuiz && changeAnswer(option, questionIndex)"
           :disabled="!isQuiz"
         />
-        <label :for="`option${index}`" class="ml-2">{{
-          `${option}`
-        }}</label>
+        <label :for="`option${index}`" class="ml-2">{{ `${option}` }}</label>
       </div>
     </div>
   </div>
@@ -57,5 +49,8 @@ const changeAnswer = (option, index) => {
     index: questionIndex.value,
   };
   emit("selectAnswer", payload);
+};
+const setBackgroundColor = (status) => {
+  return status === "CORRECT" ? "bg-green-300" : "bg-red-200";
 };
 </script>
