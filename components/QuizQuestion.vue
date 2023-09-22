@@ -1,5 +1,14 @@
 <template>
-  <div class="max-w-md mx-auto mt-8 p-4 bg-white rounded shadow-lg">
+  <div
+    class="max-w-md mx-auto mt-8 p-4 bg-white rounded shadow-lg"
+    :class="
+      !isQuiz
+        ? status === 'CORRECT'
+          ? 'bg-green-200'
+          : 'bg-red-300'
+        : 'bg-white'
+    "
+  >
     <h1 class="text-xl font-semibold mb-4">{{ question }}</h1>
 
     <div class="space-y-2">
@@ -34,12 +43,15 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  isQuiz: Boolean
+  isQuiz: Boolean,
+  status: String,
 });
 const emit = defineEmits(["selectAnswer"]);
 const { question, options, questionIndex, answer, index } = toRefs(props);
 const selectedOption = ref(answer.value);
+
 const changeAnswer = (option, index) => {
+  if (!props.isQuiz) return;
   const payload = {
     option,
     index: questionIndex.value,

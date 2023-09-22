@@ -8,7 +8,7 @@
       :options="options[index]"
       :questionIndex="index"
       @selectAnswer="changeAnswer"
-      :isQuiz=true
+      :isQuiz="true"
     />
     <div class="flex justify-center my-10">
       <button
@@ -75,7 +75,6 @@ const checkAnswers = async () => {
       body: JSON.stringify(sendData),
     }
   );
-  const data = await response.json();
-  console.log(data);
+  navigateTo(`/tests`);
 };
 </script>
