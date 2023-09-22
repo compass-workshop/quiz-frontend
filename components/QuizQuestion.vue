@@ -17,7 +17,7 @@
           @click="changeAnswer(option, questionIndex)"
         />
         <label :for="`option${index}`" class="ml-2">{{
-          `Option ${String.fromCharCode(65 + index)}: ${option}`
+          `${option}`
         }}</label>
       </div>
     </div>
