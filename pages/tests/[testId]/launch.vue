@@ -7,12 +7,12 @@
       :question="question"
       :options="options[index]"
       :questionIndex="index"
-      @selectAnswer="changeAnswer"
+      @selectAnswer="updateAnswer"
     />
     <div class="flex justify-center my-10">
       <button
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        @click="checkAnswers"
+        @click="submitTest"
       >
         Submit Test
       </button>
@@ -23,49 +23,57 @@
 <script setup>
 const questionData = ref([]);
 const options = ref([]);
-const defaultAnswer = ref([]);
-const route = useRoute();
-const params = route.params.testId;
+const selectedAnswer = ref([]);
 const userId = ref(null);
+const email = ref(null);
+const userName = ref(null);
+
+const route = useRoute();
+const testId = route.params.testId;
+
 definePageMeta({
   middleware: "auth",
 });
 
 onMounted(async () => {
   userId.value = localStorage.getItem("userId");
-  const getData = async () => {
-    const response = await fetch(`http://localhost:3000/tests/${params}`);
-    const data = await response.json();
-
-    data.questions.forEach((question) => {
-      questionData.value = [...questionData.value, question.text];
-      options.value = [...options.value, question.options];
-      defaultAnswer.value = [
-        ...defaultAnswer.value,
-        {
-          questionId: question.id,
-          questionText: question.text,
-          selectedAnswer: "",
-        },
-      ];
-    });
-  };
-  await getData();
+  email.value = localStorage.getItem("email");
+  userName.value = localStorage.getItem("userName");
+  await getQuestions();
 });
 
-const changeAnswer = (payload) => {
-  const { option, index } = payload;
-  defaultAnswer.value[index].selectedAnswer = option;
+const getQuestions = async () => {
+  const { data } = await useFetch(`http://localhost:3000/tests/${testId}`);
+  data.value.questions.forEach((question) => {
+    questionData.value = [...questionData.value, question.text];
+    options.value = [...options.value, question.options];
+    selectedAnswer.value = [
+      ...selectedAnswer.value,
+      {
+        questionId: question.id,
+        questionText: question.text,
+        selectedAnswer: "",
+      },
+    ];
+  });
 };
-const checkAnswers = async () => {
+
+const updateAnswer = (payload) => {
+  const { option, index } = payload;
+  selectedAnswer.value[index].selectedAnswer = option;
+};
+
+const submitTest = async () => {
   const sendData = {
-    submittedAmswers: defaultAnswer.value,
-    email: localStorage.getItem("email"),
-    submittedAt: new Date().getTime(),
-    submittedBy: localStorage.getItem("userName"),
+    answers: selectedAnswer.value,
+    userId: userId.value,
+    email: email.value,
+    testId: testId,
+    submittedAt: 10,
+    submittedBy: userName.value,
   };
-  const response = await fetch(
-    `http://localhost:3000/tests/${userId.value}/${params}`,
+  const response = await useFetch(
+    `http://localhost:3000/tests/${userId.value}/${testId}`,
     {
       method: "POST",
       headers: {
@@ -74,7 +82,6 @@ const checkAnswers = async () => {
       body: JSON.stringify(sendData),
     }
   );
-  const data = await response.json();
   navigateTo("/tests");
 };
 </script>

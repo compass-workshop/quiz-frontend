@@ -15,6 +15,3 @@ const userId = localStorage.getItem("userId");
 const { data } = await useFetch(`http://localhost:3000/analytics/${userId}`);
 console.log(data.value);
 </script>
-
-<style scoped>
-</style>

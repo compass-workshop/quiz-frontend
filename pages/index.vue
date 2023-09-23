@@ -101,7 +101,7 @@ const checkEmail = () => {
 
 <style scoped>
 .container {
-  @apply flex  items-center justify-center w-full  min-h-[80vh];
+  @apply flex items-center justify-center w-full min-h-[80vh];
 }
 
 .input {

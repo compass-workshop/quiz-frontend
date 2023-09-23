@@ -1,7 +1,6 @@
 <template>
   <div class="max-w-md mx-auto mt-8 p-4 bg-white rounded shadow-lg">
     <h1 class="text-xl font-semibold mb-4">{{ question }}</h1>
-
     <div class="space-y-2">
       <div
         v-for="(option, index) in options"
@@ -38,10 +37,10 @@ const emit = defineEmits(["selectAnswer"]);
 const { question, options, questionIndex, answer, index } = toRefs(props);
 const selectedOption = ref(answer.value);
 const changeAnswer = (option, index) => {
-  const payload = {
+  const answer = {
     option,
     index: questionIndex.value,
   };
-  emit("selectAnswer", payload);
+  emit("selectAnswer", answer);
 };
 </script>
