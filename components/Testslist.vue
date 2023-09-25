@@ -33,7 +33,8 @@
 
 <script setup>
 const userId = localStorage.getItem("userId");
-const { data } = await useFetch(`http://localhost:3000/users/${userId}/tests`);
+const { base_url } = useRuntimeConfig().public;
+const { data } = await useFetch(`${base_url}/users/${userId}/tests`);
 </script>
 
 <style scoped>

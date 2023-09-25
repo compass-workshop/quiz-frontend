@@ -34,7 +34,8 @@ definePageMeta({
 onMounted(async () => {
   userId.value = localStorage.getItem("userId");
   const getData = async () => {
-    const response = await fetch(`http://localhost:3000/tests/${params}`);
+    const { base_url } = useRuntimeConfig().public;
+    const response = await fetch(`${base_url}/tests/${params}`);
     const data = await response.json();
 
     data.questions.forEach((question) => {
@@ -64,8 +65,9 @@ const checkAnswers = async () => {
     submittedAt: new Date().getTime(),
     submittedBy: localStorage.getItem("userName"),
   };
+  const { base_url } = useRuntimeConfig().public;
   const response = await fetch(
-    `http://localhost:3000/tests/${userId.value}/${params}`,
+    `${base_url}/tests/${userId.value}/${params}`,
     {
       method: "POST",
       headers: {
